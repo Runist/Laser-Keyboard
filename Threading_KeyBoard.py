@@ -1,10 +1,9 @@
 import numpy as np
 import cv2 as cv
 import time
-import KeyBoardPosion
+import KeyBoardPosition
 import threading as td
 from queue import Queue
-
 
 
 def Trackbar(x):
@@ -162,6 +161,7 @@ def main(key_in, flag_in, finger_out):
     cap.release()
     cv.destroyAllWindows()
 
+
 if __name__ == '__main__':
     # 多线程键值队列
     Key = Queue()
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     Fingers_Flag = Queue()
 
     t1 = td.Thread(target=main, args=(Key, Down_flag, Fingers_Flag,))
-    t2 = td.Thread(target=KeyBoardPosion.KeyBoard_Output, args=(Key, Down_flag, Fingers_Flag,))
+    t2 = td.Thread(target=KeyBoardPosition.KeyBoard_Output, args=(Key, Down_flag, Fingers_Flag,))
 
     t1.start()
     t2.start()
